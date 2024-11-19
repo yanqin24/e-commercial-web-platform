@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="conf.ProducerMapper">
+    
+    <select id="selectAllProducer" resultType="model.Producer">
+    	select * from producer 
+    </select>
+    
+    <!-- 获取拥有某个商品的所有商家 -->
+    <select id= "selectAllProducerByGoodId" resultType = "model.Producer">
+    select * from producer 
+   	 right outer join producer_good on producer.producer_id = producer_good.producer_id
+    where good_id = #{id}
+    </select>
+    <!-- 获取拥有某个商品的所有商家 -->
+    <select id="selectProducerById" resultType="model.Producer">
+    select * from producer where producer_id = #{id}
+    </select>
+    
+    <!-- 获取有某个商品库存的所有商家 -->
+    <select id = "selectAllProducerHasGoodById" resultType = "model.Producer">
+     select * from producer 
+   	 right outer join producer_good on producer.producer_id = producer_good.producer_id
+    where good_id = #{id} and inventory > 0 
+    </select>
+    <select id = "selectAllGoodByProId" resultMap="gooddetailMap">
+    select * from producer_good 
+    left outer join goods on producer_good.good_id = goods.good_id
+    where producer_id = #{id}
+    </select>
+    <!-- 获取有某个商品库存的所有商家 -->
+    <resultMap type="model.Good" id="gooddetailMap">
+<id property="good_id" column="good_id"></id>
+<association property="img_src" column="good_id" javaType="java.util.List" select="selectGoodImgById"></association>
+</resultMap>
+    <select id="selectGoodImgById" resultType="String">
+select src from good_imgs where good_id = #{good_id}
+</select>
+    
+    
+    
+    </mapper>

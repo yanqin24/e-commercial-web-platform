@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="conf.SpecialClassMapper">
+	<select id="selectSpecialGoodByClass" parameterType="String" resultType="model.Good">
+		select * from special_class natural join goods where ${_parameter} = 1
+	</select>
+	<select id="selectSecialGoodById" parameterType="String" resultType="model.Good">
+		select * from special_class natural join goods where good_id = #{id}
+	</select>
+	<select id="selectAllSpecialClass" resultType="String">
+		select COLUMN_NAME from information_schema.columns where table_schema = 'lxsh' and table_name = 'special_class' and column_name != 'good_id';
+	</select>
+	<select id="selectGoodClassById" parameterType="String" resultType="HashMap">
+		select * from special_class where good_id = #{id}
+	</select>
+	<select id="selectAllGoodClass" parameterType="String" resultType="HashMap">
+		select * from special_class
+	</select>
+	<update id="addSpecialGoodByClass" parameterType="Map">
+		update special_class set ${specialclass} = 1 where good_id = #{id}
+	</update>
+	<update id="dropSpecialGoodByClass" parameterType="Map">
+		update special_class set ${specialclass} = 0 where good_id = #{id}
+	</update>
+	<insert id="addSpecialGoodById" parameterType="String">
+		insert into special_class(good_id) values(#{id})
+	</insert>
+	<delete id="deleteSpecialGoodById" parameterType="String">
+		delete from special_class where good_id = #{id}
+	</delete>
+	<update id="addSpecialClass" parameterType="String">
+		alter table special_class add column ${_parameter} tinyint(1) not null default 0
+	</update>
+	<update id="dropSpecialClass" parameterType="String">
+		alter table special_class drop column ${_parameter}
+	</update>
+</mapper>

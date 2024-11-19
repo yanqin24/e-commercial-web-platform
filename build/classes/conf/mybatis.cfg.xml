@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+<!-- 引入外部配置文件 
+<properties resource="mysql.properties"></properties>
+ -->
+<!-- 配置mybatis运行环境 -->
+  <environments default="cybatis">
+       <environment id="cybatis">
+            <!-- type="JDBC" 代表使用JDBC的提交和回滚来管理事务 -->
+            <transactionManager type="JDBC" />
+            
+             <!-- mybatis提供了3种数据源类型，分别是：POOLED,UNPOOLED,JNDI -->
+            <!-- POOLED 表示支持JDBC数据源连接池 -->
+            <!-- UNPOOLED 表示不支持数据源连接池 -->
+            <!-- JNDI 表示支持外部数据源连接池 -->
+            <dataSource type="POOLED">
+                 <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/lxsh?useUnicode=true&amp;characterEncoding=UTF8&amp;serverTimezone=GMT&amp;useSSL=false"/>
+                <property name="username" value="root" />
+               <property name="password" value="root" />
+             </dataSource>
+         </environment>
+                <environment id="db_info">
+            <!-- type="JDBC" 代表使用JDBC的提交和回滚来管理事务 -->
+            <transactionManager type="JDBC" />
+            
+             <!-- mybatis提供了3种数据源类型，分别是：POOLED,UNPOOLED,JNDI -->
+            <!-- POOLED 表示支持JDBC数据源连接池 -->
+            <!-- UNPOOLED 表示不支持数据源连接池 -->
+            <!-- JNDI 表示支持外部数据源连接池 -->
+            <dataSource type="POOLED">
+                 <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/information_schema?useUnicode=true&amp;characterEncoding=UTF8&amp;serverTimezone=GMT&amp;useSSL=false"/>
+                <property name="username" value="root" />
+               <property name="password" value="root" />
+             </dataSource>
+         </environment>
+     </environments> 
+    	  <mappers>
+  			<mapper resource="conf/UserMapper.xml"/>
+  			<mapper resource="conf/GoodMapper.xml"/>
+  			<mapper resource="conf/SpecialClassMapper.xml"/>
+  			<mapper resource="conf/ShoppingCartMapper.xml"/>
+  			<mapper resource="conf/ProducerMapper.xml"/>
+  			<mapper resource="conf/OrderMapper.xml"/>
+  			<mapper resource="conf/CollectionMapper.xml"/>
+  			<mapper resource="conf/GoodClassMapper.xml"/>
+</mappers>
+</configuration>

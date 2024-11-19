@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="conf.ShoppingCartMapper">
+
+	<!-- 获取单个CartGood对象（带数量） -->
+	<select id="selectGoodItem" resultMap="gooditemmap">
+		select * from shoppingcart
+		left outer join goods on shoppingcart.good_id = goods.good_id
+		left outer join producer_good on shoppingcart.good_id =
+		producer_good.good_id and shoppingcart.producer_id =
+		producer_good.producer_id
+		where user_id = #{id}
+	</select>
+	<resultMap type="model.CartGoodItem" id="gooditemmap">
+		<result property="amount" column="amount" />
+		<association property="good"
+			column="{good_id = good_id,producer_id=producer_id}"
+			javaType="model.Good" select="selectGood" />
+	</resultMap>
+	<!-- 获取单个CartGood对象 -->
+
+
+	<!-- 获取CartGood中的商品信息 -->
+	<select id="selectGood" resultMap="goodresultmap">
+		select * from goods
+		right outer join producer_good on goods.good_id = producer_good.good_id
+		where goods.good_id = #{good_id} and producer_good.producer_id =
+		#{producer_id}
+	</select>
+	<resultMap type="model.Good" id="goodresultmap">
+		<id property="good_id" column="good_id"></id>
+		<collection property="img_src" column="good_id"
+			javaType="java.util.ArrayList" ofType="java.lang.String"
+			select="selectGoodImg" />
+	</resultMap>
+	<!-- 获取CartGood中的商品信息 -->
+
+
+	<!-- 获取商品的图片信息 -->
+	<select id="selectGoodImg" resultType="java.lang.String">
+		select src from good_imgs where good_id = #{id}
+	</select>
+	<!-- 获取商品的图片信息 -->
+	<select id="selectAmountByItem" resultType="int">
+	select amount from shoppingcart where good_id = #{good.good_id} and producer_id = #{good.producer_id} and user_id = #{user_id}
+	</select>
+	<insert id="insertGoodToCart">
+		insert into shoppingcart(user_id,good_id,producer_id,amount)
+		values(#{user_id},#{good.good_id},#{good.producer_id},#{amount})
+	</insert>
+
+	<delete id="deleteGoodByIdFromCart">
+		delete from shoppingcart where good_id = #{good.good_id} and user_id=
+		#{user_id} and producer_id = #{good.producer_id}
+	</delete>
+</mapper>

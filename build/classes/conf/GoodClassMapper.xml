@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="conf.GoodClassMapper">
+	<select id="getAllTrdClass" resultType="String">
+	select third_class from second_third;
+	</select>
+	<select id="getAllFstClass" resultType="String">
+		select distinct first_class from
+		first_second
+	</select>
+
+	<select id="getSndByFstClass" parameterType="String"
+		resultType="String">
+		select second_class from first_second where
+		first_class=#{first_class}
+	</select>
+
+	<select id="getTrdBySndClass" parameterType="String"
+		resultType="String">
+		select third_class from second_third where
+		second_class=#{second_class}
+	</select>
+
+	<insert id="insertSndAndTrdClass" parameterType="hashmap">
+		insert into
+		second_third values(#{second_class}, #{third_class})
+	</insert>
+
+	<insert id="insertFstAndSndClass" parameterType="hashmap">
+		insert into
+		first_second values(#{first_class}, #{second_class})
+	</insert>
+
+	<delete id="deleteTrdClass" parameterType="String">
+		delete from
+		second_third where third_class=#{third_class}
+	</delete>
+
+	<delete id="deleteSndClass" parameterType="String">
+		delete from
+		first_second where second_class=#{second_class}
+	</delete>
+
+	<delete id="deleteFstClass" parameterType="String">
+		delete from
+		first_second where first_class=#{first_class}
+	</delete>
+
+	<delete id="deleteTrdWithSndClass" parameterType="hashmap">
+		delete from
+		second_third where second_class=#{second_class} and
+		third_class=#{third_class}
+	</delete>
+
+	<delete id="deleteSndWithFstClass" parameterType="hashmap">
+		delete from
+		first_second where first_class=#{first_class} and
+		second_class=#{second_class}
+	</delete>
+
+	<update id="updateTrdClassName" parameterType="hashmap">
+		update
+		second_third set third_class=#{new_trdclass} where
+		third_class=#{old_trdclass}
+	</update>
+
+	<update id="updateSndClassName" parameterType="hashmap">
+		update
+		first_second set third_class=#{new_sndlass} where
+		third_class=#{old_sndclass}
+	</update>
+
+	<update id="updateFstClassName" parameterType="hashmap">
+		update
+		first_second set third_class=#{new_fstclass} where
+		third_class=#{old_fstclass}
+	</update>
+</mapper>
