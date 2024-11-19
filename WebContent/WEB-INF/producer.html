@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品详情</title>
+    <link rel="stylesheet" type="text/css" href="./producer.css" />
+    <link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+
+</head>
+<body>
+<!--顶栏-->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div id = "loginedInfo" style= "display:none">
+                <a id = "info" style="font-size: 15px" class="navbar-brand">欢迎您，</a>
+                <a style="font-size: 15px" class="navbar-brand" href="../UserPage/user.html"><text id="user_idinfo">id</text></a></div>
+            <div id = "loginInfo">
+                <a id = "login" style="font-size: 15px" class="navbar-brand" href="../Mlogin/mlogin.html">登陆</a>
+                <a id = "register" style="font-size: 15px" class="navbar-brand" href="../Mlogin/mregist.html">注册</a></div>
+            <ul class="nav navbar-nav navbar-right">
+                    <a style="font-size: 15px" class="navbar-brand navbar-right" href="#">客服</a>
+                    <a style="font-size: 15px" class="navbar-brand navbar-right" href="../UserPage/user.html">个人中心</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            我的购物
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../shoppcart/shoppingcart.html">购物车</a></li>
+                            <li><a href="../OrderCenterPage/OrderCenter.html">历史订单</a></li>
+                            <li><a href="http://localhost:8080/DanielWu/user/logout">注销</a></li>
+                        </ul>
+                    </li>
+                </ul>
+       </div>
+    </nav>
+<!--logo和搜索栏-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+              <a href="../MainPage/Mainpage.html">  <img src="../images/logo.png" width="200" height="100" style="margin-left: 20px;"/></a>
+            </div>
+    
+            <div class="col-md-5">
+                <div class="input-group" style="margin-left: 70px; margin-top: 20px">
+                    <div class="input-group-btn">
+                        <ul class="dropdown-menu">
+                            <li><a href="#">食物</a></li>
+                            <li><a href="#">衣服</a></li>
+                            <li><a href="#">电器</a></li>
+                        </ul>
+                    </div>
+    
+                    <input id="search" type="text" class="form-control" placeholder="请输入商品名..." style="width: 280px"/>
+                   <button type="button" style="outline: none;color: #fff" class="btn btn-search" onclick="search(this)">搜索</button>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <form style="margin-left: 20px;" class="col-md-6" action="">
+                    <select id="place" class="btn" style="margin-top: 20px;border:1px solid rgba(2,181,157,.85)" name="area">
+                        <option value="a0" selected>长治店</option>
+                        <option value="a1" >北京店</option>
+                        <option value="a2" >呼兰店</option>
+                        <option value="a3" >玄武店</option>
+                        <option value="a4" >龙泉店</option>
+                        <option value="a5" >顺德店</option>
+                        <option value="a6" >青秀店</option>
+                        <option value="a7" >临桂店</option>
+                        <option value="a8" >双流店</option>
+                        <option value="a9" >独山子店</option>
+                    </select>
+                </form>
+            </div>
+            <div class="col-md-2">
+                <img src="../images/animal.png" width="200" height="100" style="margin-left: 20px;"/>
+            </div>
+        </div>
+    </div>
+    <!-- 
+    <div style="height: 30px; background: #c12e2a; margin-top: 20px" class="col-md-12"></div> -->
+    <hr/ style=" box-shadow:0px 1px  10px 1px #aaa;">
+        <div class="container-fluid">
+            <h3 style="margin-top: 50px;margin-left: 10%;font-weight: bold;">门店展示</h3>
+            <div class="details_clear">
+            <div class="row">
+            <div class="col-md-8">
+                <div id="proname" class="name">青柠记忆泰式海鲜火锅（金牛万达广场店）</div>
+                <hr/>
+                <div class="address">
+                    <p id="proaddress">
+                        <!-- react-text: 59 -->地址：
+                        <!-- react-text: 60 -->金牛区一环路北三段1号金牛万达广场万达金街（万达广场4号门旁）
+                        <!-- /react-text --></p>
+                    <p id="protel">
+                        <!-- react-text: 63 -->电话：
+                        <!-- /react-text -->
+                        <!-- react-text: 64 -->028-61666856
+                        <!-- /react-text -->
+                    </p>
+                    <p>
+                        <!-- react-text: 66 -->营业时间：
+                        <!-- /react-text -->
+                        <!-- react-text: 67 -->周一至周日 10:00-22:00
+                        <!-- /react-text -->
+                    </p>
+                        </div>
+                        <hr/>
+                    </div>
+                          <!-- 右边模块 -->
+             <div class="col-md-4">
+                <div class="big">
+                   <img style="border-radius: 10px" src="http://p0.meituan.net/mogu/456137b7f1ef16e1c068186de3e915fd357404.jpg@380w_214h_1e_1c">
+                </div>
+            </div>
+                </div>
+              </div>
+            <h3 style="margin-top: 50px;margin-left: 10%;font-weight: bold;">门店商品</h3>
+            <div id="listitem" class="contain">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img id="listimg" style="float: left; margin-top: 10px; margin-left: 25%; width: 60%; height: 60%" src="../images/food.jpg">
+                        </div>
+                        <div class="col-md-5" style="margin-top: 5%">
+                            <p id="listname">金牛区一环路北三段1号金牛万达广场万达金街（万达广场4号门旁）</p>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 5%">
+                            <p id="listprice">￥10</p>
+                        </div>
+                        <div class="col-md-2" style="margin-top: 5%">
+                                <p id="listprice2">￥10</p>
+                            </div>
+                    </div>
+                </div>
+            <div id="showprogood" class="details_clear">
+                   
+            </div>
+      <hr/>
+        </div>
+    <script type="text/Javascript" src="../JQ/jquery.js"></script>
+    <script type="text/Javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/Javascript" src="./producer.js"></script>
+</body>
+</html>

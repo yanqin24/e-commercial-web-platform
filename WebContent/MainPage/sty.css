@@ -1,0 +1,139 @@
+
+
+.img_pos{
+    position: absolute;
+    left: 300px;
+    top: 150px;
+}
+#line_pos{
+    
+    margin-top: 0px;
+    height:3px;
+    border:none;
+    border-top:3px double rgb(255, 208, 0);
+}
+
+.boxes{
+    width: 300px;
+    height: 300px;
+    border:5px solid mediumpurple;
+    background-color: red;
+}
+
+.itemkind:hover{
+    background-color: #ea6962;
+
+}
+
+.itemkind{
+    width: 189px;
+    height: 50px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #ededed;
+}
+
+.itemkindfont{
+    margin-left: 25px;
+    line-height: 50px;
+    color: #000000;
+}
+
+.icon{
+    margin-left: 20px;
+    width:30px;
+    height:30px;
+    font-style:normal;
+}
+/*.kindshow{*/
+    /*border-style: solid;*/
+    /*border-width: 2px;*/
+    /*position: absolute;*/
+    /*width: 700px;*/
+    /*height: 400px;*/
+    /*left: 380px;*/
+    /*top: 218px;*/
+    /*z-index: 2;*/
+    /*opacity: 0.9;*/
+    /*background-color: #ffffff;*/
+    /*display: none;*/
+/*}*/
+
+/*.showson{*/
+    /*width: 300px;*/
+    /*height: 120px;*/
+    /*border-right-style: solid;*/
+    /*border-right-width: 1px;*/
+    /*border-color: #ededed;*/
+/*}*/
+
+/*.pshowson{*/
+    /*margin-left: 10px;*/
+    /*font-family: SimSun;*/
+    /*font-weight: bold;*/
+    /*font-size: 15px;*/
+/*}*/
+
+/*.pshowgradson{*/
+    /*margin-left: 10px;*/
+    /*color: #000000;*/
+    /*font-size: 13px;*/
+/*}*/
+
+.recom{
+    width: 1100px;
+    height: 300px;
+    margin-left: 225px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #000000;
+    background-color: #f8efc0;
+}
+
+.recomhead{
+    width: 250px;
+    height: 600px;
+}
+
+.recomp{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 260px;
+    margin-top: 50px
+}
+
+.recomlist{
+    width: 100px;
+    height: 100px;
+}
+
+.recompho{
+    width: 259px;
+    height: 149px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0f0f0f;
+}
+
+.column-search{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row-search-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.navigation-bar{
+    position:relative;
+    height:40px;
+    line-height: 40px;
+    /*border:1px solid transparent;*/
+    background: #f8f8f8;
+    color: #999;
+
+}

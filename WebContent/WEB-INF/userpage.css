@@ -1,0 +1,19 @@
+.imageFileInput{
+    float: left;
+    width: 100px;
+    height:100px;/*
+    background-image: url("../images/sweets.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% 100%;*/
+
+
+}
+
+.fileInput{
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    opacity: 0;
+}
+

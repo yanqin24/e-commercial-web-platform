@@ -1,0 +1,33 @@
+.details_clear{
+    border: 1px solid #ededed;
+    border-radius: 10px;
+    height:auto; 
+    width: 1200px;
+    margin-top: 15px;
+    margin-left: 10%;
+    box-shadow:0px 0px  10px 1px #aaa;
+}
+
+.name{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-family: Serif;
+    font-size: 25px;
+    font-weight: bold
+}
+
+.address{
+    margin-left: 20px;
+}
+
+.contain{
+    width: 1100px;
+    height: 170px;
+    border:3px solid #ededed;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.btn-search{width:70px;height:35px;background-color:#13D1BE;color:#fff;border-radius: 0px 5px 5px 0px;}

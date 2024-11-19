@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/Javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link  rel="stylesheet" type="text/css" href="search.css"/>
+    <script type="text/Javascript" src="../JQ/jquery.js"></script>
+    <script src="search.js"></script>
+
+    <style type="text/css">
+        button{outline:none;}
+        a{color: #999}
+        a:link{text-decoration:none; }  /* 指正常的未被访问过的链接*/
+        a:visited{text-decoration:none;}/*指已经访问过的链接*/
+        a:hover{text-decoration:none;color:#31BBAC}/*指鼠标在链接*/
+        a:active{text-decoration:none;}/* 指正在点的链接*/
+        .tag{display:inline-block;font-size: 12px;width: 78px;text-align: center;}
+        .tag:hover{background-color: #ffffff;box-shadow: 0 2px 27px 0 rgba(0,0,0,.1);}
+        .btn-search{width:88px;height:42px;background-color:#13D1BE;color:#fff;border-radius: 0px 5px 5px 0px;}
+        .btn-collect{width:120px;height:42px;background-color:#fff;color:#000;border-radius: 25px;border: 2px solid #13D1BE}
+        .btn-collect:hover{color:#13D1BE; background-color: #f2fbfa;}
+        .navigation-bar{position:relative;height:40px;line-height: 40px;background: #f8f8f8;color: #999;}
+
+
+        .left-banner {float: left;}
+        .right-banner {float: left;width: auto}
+        .item-kind{text-align:left;width: 230px;height: 35px;padding-left:15px;line-height: 35px;}
+        .item-kind:hover{background-color: #54c9be}
+        .item-kind a:hover{text-decoration:none;color:#fff}
+        .item-kindfont{color: #fff;font-size: 14px;}
+        .item-kind i{float:right;line-height:35px;margin-right:15px;color: #fff;font-size: 10px;}
+        .item-kind img{width: 25px;height: 25px;margin-right:5px;}
+        .kindshow{border: 1px solid #f5f5f5;position: absolute;left: 419px;top: 192px;background-color: #ffffff;display: none;width: 400px;height: 416px;z-index: 199;color: #666;overflow: hidden;}
+        .showson{width: 340px;height: 396px;margin: 10px 30px;}
+        .pshowson{padding-bottom: 10px;font-size: 17px;font-weight: 500;color: #222;cursor: pointer;border-bottom: 1px solid #e5e5e5;}
+        .pshowgradson{margin-right: 15px;color: #999;font-size: 13px;}
+        .main-Tags{width: 100%;line-height: 50px;height: 50px;margin-left: 40px;}
+        .maintag{font-size: 16px;font-weight: 700;margin: 0 20px;color: #222;text-align: center}
+        .a1:hover{color:#fbc700;}
+        .a2:hover{color:#ed1e24}
+        .a3:hover{color:#13D1BE}
+
+        .Tag:hover{opacity: 0.8}
+
+    </style>
+</head>
+<body>
+<!--顶栏-->
+<header style="box-shadow: 0 2px 27px 0 rgba(0,0,0,.1);">
+    <!--顶部导航栏-->
+    <nav class="navigation-bar">
+        <div class="container" id="div1" >
+            <div id = "loginedInfo" style= "width: 200px;display:none; float:left">
+                <text id = "info" style="font-size: 12px;color:#999;margin-right: 10px;">欢迎您，</text>
+                <a style="margin-left: 10px;font-size: 12px;" href="../UserPage/user.html"><text id="user_idinfo">id</text></a></div>
+            <div id = "loginInfo" style="width: 200px;display: inline-block;float:left">
+                <text style="font-size: 12px;color:#999;margin-right: 10px;" >乐鲜生活欢迎你！</text>
+                <a id = "login" style="font-size: 12px;color:#31BBAC;"   href="../Mlogin/mlogin.html">立即登录</a>
+                <a id = "register" style="margin-left: 10px;font-size: 12px;"   href="../Mlogin/mregist.html">注册</a>
+            </div>
+            <ul style="float: right">
+                <!--<a class="tag" href="#">我的购物</a>-->
+                <li class="dropdown  tag">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        我的购物
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../shoppcart/shoppingcart.html">我的购物车</a></li>
+                        <li><a href="../OrderCenterPage/OrderCenter.html">历史订单</a></li>
+                        <li><a href="../Mlogin/mregist.html">注销</a></li>
+                    </ul>
+                </li>
+                <a class="tag"  href="../UserPage/userpage.html">个人中心</a>
+                <a class="tag" href="#">客户服务</a>
+            </ul>
+        </div>
+    </nav>
+
+    <!--搜索+logo-->
+    <div class="container" style="display: block;margin-top: 15px;padding-bottom: 65px;">
+       <a href="../MainPage/Mainpage.html"> <img src="../images/logo_main.png" style="line-height:63px;width: 112px;height: 63px;display: inline-block;" alt="">
+</a>
+        <div class="input-group" style="display: inline-block;margin-left: 150px;margin-top: 0px;">
+            <input id="search" type="text" class="form-control" placeholder="请输入商品名..." style="width: 462px;height: 42px;border: 1px solid #13D1BE;"/>
+            <button type="button" style="outline: none;color: #fff" class="btn btn-search" onclick="search(this)">搜索</button>
+        </div>
+
+        <button type="button" style="outline: none;margin-left: 150px " class="btn-collect" onclick="gotocart()">
+            <div class="glyphicon glyphicon-shopping-cart" style="color: #13D1BE;margin-right: 5px"></div>
+            购物车
+        </button>
+    </div>
+</header>
+
+
+<!--导航侧栏-->
+<div class="container" style="margin-top: -50px;">
+    <div class="left-banner">
+        <div id="recorder-main" style="background: -webkit-linear-gradient(-90deg,rgba(2,181,157,.85) 2%,rgba(2,181,157,.85) 100%);width: 230px;height: 50px;" >
+            <div style="line-height: 50px;height: 50px;margin-left: 15px;font-size:17px;color: #fff;">全部分类</div>
+        </div>
+
+        <div id="recorder" style="display:none;position: absolute; background: -webkit-linear-gradient(-90deg,rgba(2,181,157,.85) 2%,rgba(22,146,183,.85) 100%);width: 230px;height: 425px;">
+            <div class="item-kind">
+                <img src="../images/importedfoodstuff.png" ></img>
+                <a class="item-kindfont" href="#">进口食品</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/food.png" ></img>
+                <a class="item-kindfont" href="#">食品饮料</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/grainandoil.png" ></img>
+                <a class="item-kindfont" href="#">粮油副食</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/beauty.png" ></img>
+                <a class="item-kindfont" href="#">美容洗发</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/household.png" ></img>
+                <a class="item-kindfont" href="#">家居家电</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/mother.png" ></img>
+                <a class="item-kindfont" href="#">母婴用品</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/study.png" ></img>
+                <a class="item-kindfont" href="#">学习用具</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+
+            <!--为界面美观添加-->
+            <div class="item-kind">
+                <img src="../images/outdoor.png" ></img>
+                <a class="item-kindfont" href="#">户外运动</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/computer.png" ></img>
+                <a class="item-kindfont" href="#">电脑科技</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/watch.png" ></img>
+                <a class="item-kindfont" href="#">手表饰品</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/TShirt.png" ></img>
+                <a class="item-kindfont" href="#">潮流T恤</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+            <div class="item-kind">
+                <img src="../images/shoe.png" ></img>
+                <a class="item-kindfont" href="#">服饰鞋靴</a>
+                <i class="glyphicon glyphicon-menu-right" ></i>
+            </div>
+        </div>
+
+    </div>
+    <div class="right-banner">
+        <div class="main-Tags">
+            <a class="maintag a1" href="../MainPage/Mainpage.html">首页</a>
+            <a class="maintag a2" href="../ProducerPage/producer.html">门店</a>
+            <a class="maintag a3" href="#">客服</a>
+        </div>
+    </div>
+
+    <!--弹出展示框-->
+    <div id="show" class="kindshow">
+        <div id="show1" class="showson">
+            <h2 class="pshowson">糖果</h2>
+            <a class="pshowgradson" href="../SearchPage/search.html">大白兔</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">徐福记</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">Yummy Earth</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">阿尔卑斯</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">不二家</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">良品铺子</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">金冠</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">意萌</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">珍宝珠</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">Jelly Belly/吉力贝</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">WRIGLEY'S DOUBLEMINT/绿箭</a>
+            <a class="pshowgradson" href="../SearchPage/search.html">RIOKracie</a>
+        </div>
+    </div>
+</div>
+
+<!--主体栏目--->
+<div class="container" >
+<!--条件栏-->
+    <div style="margin-top: 40px">
+        <text style="color: #000000; font-size: 15px;">选择分类</text>
+        <img class="icon" src="../images/more_icon.png"/>
+    </div>
+
+    <div style="padding-top: 10px;">
+        <table class="table-search" style="height: 188px">
+            <tr style="border-bottom: 1px dashed #ededed">
+                <td class="col-sm-1" style="text-align: right;font-weight: bold;">一级分类：</td>
+                <td class="col-sm-10" >
+                    <button id="but11" class="button-search" onclick="opentwo(this)">食品饮料</button>
+                    <button id="but12" class="button-search" onclick="opentwo(this)">粮油副食</button>
+                    <button id="but13" class="button-search" onclick="opentwo(this)">家居家电</button>
+                </td>
+              <!--   <td class="col-sm-1" style="text-align: right; padding-top: 30px">
+                    <button  class="button-search " style="padding-left: 0px;">
+                        更多
+                        <div class="glyphicon glyphicon-menu-down"></div>
+                    </button>
+                </td> -->
+            </tr>
+            <tr style="border-bottom: 1px dashed #ededed">
+                <td class="col-xs-1" style="text-align: right;font-weight: bold;">二级分类：</td>
+                <td class="col-xs-10" >
+                    <button   id="but21" class="button-search" onclick="openthree(this)">糖果/巧克力</button>
+                    <button   id="but22" class="button-search" onclick="openthree(this)">肉类/豆干</button>
+                    <button   id="but23" class="button-search" onclick="openthree(this)">饮料/水</button>
+                 <!--    <button   class="button-search">小家电</button>
+                    <button   class="button-search">方便速食</button>
+                    <button   class="button-search">糖果/巧克力</button>
+                    <button   class="button-search">肉类/豆干</button>
+                    <button   class="button-search">食用油</button>
+                    <button   class="button-search">饮料/水</button> -->
+                </td>
+                <!--<td class="col-xs-1" style="text-align: right;">-->
+                    <!--<button  class="button-search " style="text-align: right;padding-left: 0px;">-->
+                        <!--更多-->
+                        <!--<div class="glyphicon glyphicon-menu-down"></div>-->
+                    <!--</button>-->
+                <!--</td>-->
+            </tr>
+            <tr >
+                <td class="col-xs-1" style="text-align: right;font-weight: bold;">三级分类：</td>
+                <td class="col-xs-10" >
+                    <button id="but31"  class="button-search" onclick="opengoodlist(this)">口香糖</button>
+                    <button id="but32"  class="button-search" onclick="opengoodlist(this)">巧克力</button>
+                </td>
+                <!--<td class="col-xs-1" style="text-align: right;padding-bottom: 30px">-->
+                    <!--<button  class="button-search " style="text-align: right;padding-left: 0px;">-->
+                        <!--更多-->
+                        <!--<div class="glyphicon glyphicon-menu-down"></div>-->
+                    <!--</button>-->
+                <!--</td>-->
+            </tr>
+        </table>
+    </div>
+
+
+    
+    <div style="padding-top: 10px;width: 1140px">
+        <table border="1" class="table-search">
+            <tr>
+                <td class="col-xs-1" style="text-align: center;border-right: 1px solid #cdcdcd">综合排序</td>
+                <td class="col-xs-1" style="text-align: center;">销量</td>
+                <td class="col-xs-1" style="text-align: center;">信用</td>
+                <td class="col-xs-3">
+                    <text style="margin-right: 20px" >价格</text>
+                    <input type="text" placeholder="￥" style="height:25px;width:60px" >
+                    <text class="glyphicon glyphicon-minus"></text>
+                    <input type="text" placeholder="￥" style="height:25px;width:60px" >
+                </td>
+                <td class="col-xs-3" style="text-align: center;"> </td>
+                <td class="col-xs-3" style="text-align: center;">
+                    <button class="glyphicon glyphicon-menu-left" style="background: none;border:0;"></button>
+                    <text style="margin-right: 10px;margin-left: 10px" >1 / 1</text>
+                    <button class="glyphicon glyphicon-menu-right" style="background: none;border:0;"></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="product-box" class="row-search-item">
+    <div id="product-item" class="column-search" style="width: 250px;height: 350px;margin-top: 30px;margin-right: 10px;">
+        <div class="container">
+            <div class="row-search-item">
+                <a id="click" href="#"><div class="column-search" style="width: 250px;height: 500px;margin-top: 30px;margin-right: 10px;">
+                    <img id="goodimg" src="../images/food.jpg" alt="" style="width: 250px;height: 250px" >
+                    <div class="row-search-item" style="padding-top: 5px;">
+                        <text id="goodprice" style="width: 120px;color: red;font-size: 17px;text-align: left;margin-left: 5px">￥ 14.00</text>
+                        <text id="goodsalenum" style="width: 120px;color: #cdcdcd;font-size: 14px;text-align: right;margin-right: 5px">1314人付款</text>
+                    </div>
+                    <text id="gooddes" style="line-height: 25px;font-size: 14px;color:#000000;margin: 5px;">小胡鸭鱼豆腐158g休闲零食小吃豆干香辣鱼豆腐</text>
+                    <div class="row-search-item" style="width:100%;padding-top: 5px;margin-left: 5px;margin-right: 5px;text-align: left">
+                        <div style="width:50%;">
+                            <text class="glyphicon glyphicon-menu-hamburger" style="color: red;background: none;width: 20px;height: 20px"></text>
+                            <text style="color: #000000;font-size: 14px;margin-left: 5px">乐鲜生活</text>
+                        </div>
+                        <text id="goodprodu" style="width:50%;color: #000000;font-size: 14px;margin-right: 5px;text-align: right">上海</text>
+                    </div>
+                </div></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--详细数据-->
+<div id="product-container" class="container">
+   <!--  <div id="product-box-0" class="row-search-item">
+        <div id="product-item-0" class="Tag column-search" style="width: 280px;height: 400px;margin-top: 30px;margin-right: 10px;">
+            <div class="Tag">
+                <div class="row-search-item">
+                    <a id="click" href="#">
+                        <div class="column-search" style="width: 280px;height: 400px;margin-right: 5px;">
+                            <img id="goodimg" src="../images/food.jpg" alt="" style="width: 280px;height: 280px" >
+                            <div class="row-search-item" style="padding-top: 5px;">
+                                <text id="goodprice" style="width: 135px;color: red;font-size: 17px;text-align: left;margin-left: 5px">￥ 14.00</text>
+                                <text id="goodsalenum" style="width: 135px;color: #cdcdcd;font-size: 14px;text-align: right;margin-right: 5px">1314人付款</text>
+                            </div>
+                            <text id="gooddes" style="line-height: 25px;font-size: 14px;color:#000000;margin: 5px;">小胡鸭鱼豆腐158g休闲零食小吃豆干香辣鱼豆腐</text>
+                            <div class="row-search-item" style="width:100%;padding-top: 5px;margin-left: 5px;margin-right: 5px;text-align: left">
+                                <div style="width:50%;">
+                                    <text class="glyphicon glyphicon-menu-hamburger" style="color: red;background: none;width: 20px;height: 20px"></text>
+                                    <text style="color: #000000;font-size: 14px;margin-left: 5px">乐鲜生活</text>
+                                </div>
+                                <text id="goodprodu" style="width:50%;color: #000000;font-size: 14px;margin-right: 5px;text-align: right">上海</text>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>
+
+</body>
+</html>

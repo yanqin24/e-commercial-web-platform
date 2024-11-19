@@ -1,0 +1,75 @@
+{
+  "status": 200,
+  "producers": [
+    {
+      "producer_id": "047100",
+      "name": "乐鲜生活长治店",
+      "province": "山西",
+      "city": "长治",
+      "county": "长治"
+    },
+    {
+      "producer_id": "100102",
+      "name": "乐鲜生活北京店",
+      "province": "北京",
+      "city": "北京",
+      "county": "朝阳"
+    },
+    {
+      "producer_id": "150526",
+      "name": "乐鲜生活呼兰店",
+      "province": "黑龙江",
+      "city": "哈尔滨",
+      "county": "呼兰"
+    },
+    {
+      "producer_id": "210009",
+      "name": "乐鲜生活玄武店",
+      "province": "江苏",
+      "city": "南京",
+      "county": "玄武"
+    },
+    {
+      "producer_id": "323700",
+      "name": "乐鲜生活龙泉店",
+      "province": "浙江",
+      "city": "丽水",
+      "county": "龙泉"
+    },
+    {
+      "producer_id": "528305",
+      "name": "乐鲜生活顺德店",
+      "province": "广州",
+      "city": "佛山",
+      "county": "顺德"
+    },
+    {
+      "producer_id": "530021",
+      "name": "乐鲜生活青秀店",
+      "province": "广西",
+      "city": "南宁",
+      "county": "青秀"
+    },
+    {
+      "producer_id": "541100",
+      "name": "乐鲜生活临桂店",
+      "province": "广西",
+      "city": "桂林",
+      "county": "临桂"
+    },
+    {
+      "producer_id": "610211",
+      "name": "乐鲜生活双流店",
+      "province": "四川",
+      "city": "成都",
+      "county": "双流"
+    },
+    {
+      "producer_id": "833600",
+      "name": "乐鲜生活独山子店",
+      "province": "新疆",
+      "city": "克拉玛依",
+      "county": "独山子"
+    }
+  ]
+}

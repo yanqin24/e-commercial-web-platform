@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>  
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">  
+   
+    <display-name>Spring3MVC</display-name>  
+    
+    <servlet>
+ 
+        <servlet-name>springmvc</servlet-name>  
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  
+        <!-- load-on-startup：表示启动容器时初始化该Servlet； -->  
+        <param-name>contextConfigLocation</param-name>  
+     <param-value>/WEB-INF/springmvc-servlet.xml</param-value>  
+        <load-on-startup>1</load-on-startup>  
+        <multipart-config>
+       <max-file-size>20848820</max-file-size>
+    <max-request-size>418018841</max-request-size>
+    <file-size-threshold>1048576</file-size-threshold>
+        </multipart-config>
+    </servlet>  
+   
+    <servlet-mapping>  
+        <servlet-name>springmvc</servlet-name>  
+        <!-- url-pattern：表示哪些请求交给Spring Web MVC处理， “/” 是用来定义默认servlet映射的。 -->  
+        <!-- 也可以如“*.html”表示拦截所有以html为扩展名的请求。 -->  
+        <url-pattern>/</url-pattern>  
+     </servlet-mapping> 
+    <servlet-mapping>  
+        <servlet-name>springmvc</servlet-name>  
+        <!-- url-pattern：表示哪些请求交给Spring Web MVC处理， “/” 是用来定义默认servlet映射的。 -->  
+        <!-- 也可以如“*.html”表示拦截所有以html为扩展名的请求。 -->  
+        <url-pattern>*.css</url-pattern>  
+     </servlet-mapping>
+     
+     <welcome-file-list>  
+        <welcome-file>login</welcome-file>  
+    </welcome-file-list>  
+   
+    <!-- 自此请求已交给Spring Web MVC框架处理，因此我们需要配置Spring的配置文件， -->  
+    <!-- 默认DispatcherServlet会加载WEB-INF/[DispatcherServlet的Servlet名字,也就是上面的spring]-servlet.xml配置文件。 -->  
+    <!-- 即spring-servlet.xml -->  
+   
+</web-app>  

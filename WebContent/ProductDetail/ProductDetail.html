@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品详情</title>
+
+    <link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <script  type="text/Javascript" src="../JQ/jquery.js"></script>
+    <script type="text/Javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/Javascript" src="ProductDetail.js"></script>
+    <style type="text/css">
+    button{outline:none;}
+    a{color: #999}
+    a:link{text-decoration:none; }  /* 指正常的未被访问过的链接*/
+    a:visited{text-decoration:none;}/*指已经访问过的链接*/
+    a:hover{text-decoration:none;color:#31BBAC}/*指鼠标在链接*/
+    a:active{text-decoration:none;}/* 指正在点的链接*/
+    .tag{display:inline-block;font-size: 12px;width: 78px;text-align: center;}
+    .tag:hover{background-color: #ffffff;box-shadow: 0 2px 27px 0 rgba(0,0,0,.1);}
+    .btn-search{width:88px;height:42px;background-color:#13D1BE;color:#fff;border-radius: 0px 5px 5px 0px;}
+    .btn-collect{width:120px;height:42px;background-color:#fff;color:#000;border-radius: 25px;border: 2px solid #13D1BE}
+    .btn-collect:hover{color:#13D1BE; background-color: #f2fbfa;}
+    .navigation-bar{position:relative;height:40px;line-height: 40px;background: #f8f8f8;color: #999;}
+
+
+    .left-banner {float: left;}
+    .right-banner {float: left;width: auto}
+    .item-kind{text-align:left;width: 230px;height: 35px;padding-left:15px;line-height: 35px;}
+    .item-kind:hover{background-color: #54c9be}
+    .item-kind a:hover{text-decoration:none;color:#fff}
+    .item-kindfont{color: #fff;font-size: 14px;}
+    .item-kind i{float:right;line-height:35px;margin-right:15px;color: #fff;font-size: 10px;}
+    .item-kind img{width: 25px;height: 25px;margin-right:5px;}
+    .kindshow{border: 1px solid #f5f5f5;position: absolute;left: 419px;top: 192px;background-color: #ffffff;display: none;width: 400px;height: 416px;z-index: 199;color: #666;overflow: hidden;}
+    .showson{width: 340px;height: 396px;margin: 10px 30px;}
+    .pshowson{padding-bottom: 10px;font-size: 17px;font-weight: 500;color: #222;cursor: pointer;border-bottom: 1px solid #e5e5e5;}
+    .pshowgradson{margin-right: 15px;color: #999;font-size: 13px;}
+    .main-Tags{width: 100%;line-height: 50px;height: 50px;margin-left: 40px;}
+    .maintag{font-size: 16px;font-weight: 700;margin: 0 20px;color: #222;text-align: center}
+    .a1:hover{color:#fbc700;}
+    .a2:hover{color:#ed1e24}
+    .a3:hover{color:#13D1BE}
+
+    .Tag:hover{opacity: 0.8}
+
+</style>
+</head>
+<body>
+
+<!--顶栏-->
+<header style="box-shadow: 0 2px 27px 0 rgba(0,0,0,.1);">
+    <!--顶部导航栏-->
+   <nav class="navigation-bar">
+        <div class="container" id="div1" >
+            <div id = "loginedInfo" style= "width: 200px;display:none; float:left">
+                <text id = "info" style="font-size: 12px;color:#999;margin-right: 10px;">欢迎您，</text>
+                <a style="margin-left: 10px;font-size: 12px;" href="../UserPage/user.html"><text id="user_idinfo">id</text></a></div>
+            <div id = "loginInfo" style="width: 200px;display: inline-block;float:left">
+                <text style="font-size: 12px;color:#999;margin-right: 10px;" >乐鲜生活欢迎你！</text>
+                <a id = "login" style="font-size: 12px;color:#31BBAC;"   href="../Mlogin/mlogin.html">立即登录</a>
+                <a id = "register" style="margin-left: 10px;font-size: 12px;"   href="../Mlogin/mregist.html">注册</a>
+            </div>
+            <ul style="float: right">
+                <!--<a class="tag" href="#">我的购物</a>-->
+                <li class="dropdown  tag">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        我的购物
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../shoppcart/shoppingcart.html">我的购物车</a></li>
+                        <li><a href="../OrderCenterPage/OrderCenter.html">历史订单</a></li>
+                        <li><a href="../Mlogin/mregist.html">注销</a></li>
+                    </ul>
+                </li>
+                <a class="tag"  href="../UserPage/userpage.html">个人中心</a>
+                <a class="tag" href="#">客户服务</a>
+            </ul>
+        </div>
+    </nav>
+    <!--搜索+logo-->
+    <div class="container" style="display: block;margin-top: 15px;padding-bottom: 65px;">
+      <a href="../MainPage/Mainpage.html">  <img src="../images/logo_main.png" style="line-height:63px;width: 112px;height: 63px;display: inline-block;" alt="">
+</a>
+        <div class="input-group" style="display: inline-block;margin-left: 150px;margin-top: 0px;">
+            <input id="search" type="text" class="form-control" placeholder="请输入商品名..." style="width: 462px;height: 42px;border: 1px solid #13D1BE;"/>
+            <button type="button" style="outline: none;color: #fff" class="btn btn-search" onclick="search(this)">搜索</button>
+        </div>
+
+        <button type="button" style="outline: none;margin-left: 150px " class="btn-collect" onclick="gotocart()">
+            <div class="glyphicon glyphicon-shopping-cart" style="color: #13D1BE;margin-right: 5px"></div>
+            购物车
+        </button>
+    </div>
+</header>
+<!--分割线-->
+<!--商品详情顶部-->
+<div class="container" style="margin-top: 30px">
+    <div class="row-Alix" >
+        <div class="col-xs-4 coloum-Alix">
+            <!--主图-->
+            <img id ="good_img" src="timg.jpg" alt="彼得潘领长袖白衬衫女" style="height: 350px;width: 350px">
+            <!--预览图 需要绑定事件-->
+            <div class="row-Alix"  style="margin-top: 20px">
+                <img src="timg.jpg" alt="彼得潘领长袖白衬衫女" style="height: 50px;width: 50px;margin-right: 5px">
+                <img src="timg.jpg" alt="彼得潘领长袖白衬衫女" style="height: 50px;width: 50px;margin-right: 5px">
+                <img src="timg.jpg" alt="彼得潘领长袖白衬衫女" style="height: 50px;width: 50px;margin-right: 5px">
+                <img src="timg.jpg" alt="彼得潘领长袖白衬衫女" style="height: 50px;width: 50px;margin-right: 5px">
+                <img src="timg.jpg" alt="彼得潘领长袖白衬衫女" style="height: 50px;width: 50px;margin-right: 5px">
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="coloum-Alix" style="margin-left: 20px">
+                <text id="gooddetades" style="font-size: 18px;color: #000000">听心/彼得潘领长袖白衬衫女/清新文艺复古棉纱圆领上衣打底18秋季</text>
+                <div style="background-image: url(../images/detail_bg.png);margin-top: 10px;">
+                    <div style="display: flex;flex-direction: row;align-items: center">
+                        <p style="height:40px;"></p>
+                        <text style="width:80px;font-size: 13px;color: #a499a4;text-align: left;margin-left: 10px;">价格:</text>
+                        <text id="gooddetaprice" style="font-size: 25px;font-weight:bold;color: red;text-align: left;margin-left: 5px;">￥1800.00</text>
+                    </div>
+
+                    <div id="choosepro" style="display: flex;flex-direction: row;align-items: center">
+                        <p style="height:30px;"></p>
+                        <text style="width:80px;font-size: 13px;color: #a499a4;text-align: left;margin-left: 10px;">门店:</text>
+                        <form  action="">
+                            <select id="chosprodu" class="btn" style="margin-top: 20px;border:1px solid rgb(255, 83, 77)" name="area">
+                                 <option value="a"  selected>请选择门店</option>                                
+                                <option value="a0" >乐鲜生活长治店</option>
+                                <option value="a1" >乐鲜生活北京店</option>
+                                <option value="a2" >乐鲜生活呼兰店</option>
+                                <option value="a3" >乐鲜生活玄武店</option>
+                                <option value="a4" >乐鲜生活龙泉店</option>
+                                <option value="a5" >乐鲜生活顺德店</option>
+                                <option value="a6" >乐鲜生活青秀店</option>
+                                <option value="a7" >乐鲜生活临桂店</option>
+                                <option value="a8" >乐鲜生活双流店</option>
+                                <option value="a9" >乐鲜生活独山子店</option>
+                            </select>
+                        </form>
+              
+                     
+                        <!--<text style="font-size: 15px;color: black;text-align: left;margin-left: 5px;">四川省 成都市 双流县</text>-->
+                    </div>
+
+                    <div style="display: flex;flex-direction: row;align-items: center">
+                        <p style="height:30px;"></p>
+                        <text style="width:80px;font-size: 13px;color: #a499a4;text-align: left;margin-left: 10px;">是否有货:</text>
+                        <text id="ifgood" style="font-size: 15px;color: black;text-align: left;margin-left: 10px;"></text>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px;">
+                  <!--  <div style="display: flex;flex-direction: row;align-items: center">
+                        <p style="height:40px;"></p>
+                        <text style="width:80px;font-size: 13px;color: #a499a4;text-align: left;margin-left: 10px;">尺码:</text>
+                        <button style="width:30px;height:30px;border:1px solid #cdcdcd;background:none;color: black;text-align: center;margin-left: 5px;">S</button>
+                        <button style="width:30px;height:30px;border:1px solid #cdcdcd;background:none;color: black;text-align: center;margin-left: 5px;">M</button>
+                        <button style="width:30px;height:30px;border:1px solid #cdcdcd;background:none;color: black;text-align: center;margin-left: 5px;">L</button>
+                        <button style="width:30px;height:30px;border:1px solid #cdcdcd;background:none;color: black;text-align: center;margin-left: 5px;">XL</button>
+                    </div>
+
+                    <div style="display: flex;flex-direction: row;align-items: center">
+                        <p style="height:40px;"></p>
+                        <text style="width:80px;font-size: 13px;color: #a499a4;text-align: left;margin-left: 10px;">颜色分类:</text>
+                        <button style="width:55px;height:45px;border:1px solid #cdcdcd;background:none;color: black;text-align: center;margin-left: 5px;">
+                            <img src="" alt="假装是红色" style="width:40px;height:40px;">
+                        </button>
+                        <button style="width:55px;height:45px;border:1px solid #cdcdcd;background:none;color: black;text-align: center;margin-left: 5px;">
+                            <img src="" alt="假装是黄色" style="width:40px;height:40px;">
+                        </button>
+                    </div>-->
+
+                    <div style="display: flex;flex-direction: row;align-items: center">
+                        <p style="height:40px;"></p>
+                        <text style="width:80px;font-size: 13px;color: #a499a4;text-align: left;margin-left: 10px;">数量:</text>
+                        <input id="gooddetanum" type="text" style="width: 100px;height: 35px;margin-right: 5px" onchange="getnum()">件</input>
+                    </div>
+                </div>
+
+                <div>
+                    <p style="height:20px;"></p>
+                    <button style="border:0px;font-weight:bold;font-size:20px;margin-left: 0px;height: 50px;width: 150px;background: #ffe4d0;color: #e75a28" onclick="favour()">收藏</button>
+                    <button onclick="joincart()" style="border:0px;font-weight:bold;font-size:20px;
+                    margin-left: 20px;height: 50px;width: 200px;background: #ff4400;color: #ffffff">加入购物车</button>
+                </div>
+
+
+            </div>
+        </div>
+        <!--<div class="col-xs-2" ></div>-->
+    </div>
+</div>
+<!--顶部底线-->
+<div class="container" >
+    <div class=" col-xs-10" style="border-bottom: 1px dashed #cdcdcd;padding-bottom:10px;margin-bottom: 10px"> </div>
+</div>
+
+<!--商品详情中部-->
+<div class="container" >
+    <div class="col-xs-2">
+        <div class="seller" style="width: 100%;text-align: center;">
+            <text style="font-weight: bold; width: 100%;height: 42px;line-height: 42px;border-bottom: 1px solid #cdcdcd">店 家 信 息</text>
+            <div style="width: 100%;line-height: 30px;text-align: left; ">
+                <p>听心/森系清新文艺复古女装</p>
+                <p>QQ:123456789</p>
+                <p>工作时间</p>
+                <p> 周一至周五：9:00-23:30</p>
+                <p> 周六至周日：9:00-23:30</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-8">
+        <ul class="nav nav-tabs ">
+            <li role="presentation" class="active">
+                <a href="#">宝贝详情</a>
+            </li>
+            <li role="presentation">
+                <a href="#">累计评论</a>
+            </li>
+        </ul>
+        <div class="row-Alix" style="padding-top: 50px;height: 100%">
+            <div class="col-xs-4" style="display: flex;flex-direction: column;align-items: left">
+                <text style="padding: 3px 0 3px 0;">货号: C001</text>
+                <text style="padding: 3px 0 3px 0;">通勤: 文艺</text>
+                <text style="padding: 3px 0 3px 0;">袖型: 常规</text>
+                <text style="padding: 3px 0 3px 0;">图案: 纯色</text>
+                <text style="padding: 3px 0 3px 0;">年份季节: 2018年春季</text>
+            </div>
+            <div class="col-xs-4" style="display: flex;flex-direction: column;align-items: left">
+                <text style="padding: 3px 0 3px 0;">服装版型: 直筒</text>
+                <text style="padding: 3px 0 3px 0;">衣长: 中长款</text>
+                <text style="padding: 3px 0 3px 0;">领型: 娃娃领</text>
+                <text style="padding: 3px 0 3px 0;">成分含量: 96%及以上</text>
+                <text style="padding: 3px 0 3px 0;">颜色分类: 藏青 白色</text>
+            </div>
+            <div class="col-xs-4" style="display: flex;flex-direction: column;align-items: left">
+                <text style="padding: 3px 0 3px 0;">风格: 通勤</text>
+                <text style="padding: 3px 0 3px 0;">袖长: 长袖</text>
+                <text style="padding: 3px 0 3px 0;">衣门襟: 单排多扣</text>
+                <text style="padding: 3px 0 3px 0;">质地: 棉</text>
+                <text style="padding: 3px 0 3px 0;">尺码: S M L XL</text>
+            </div>
+        </div>
+        <img src="https://img.alicdn.com/imgextra/i1/778652476/TB2aHZYf6lxYKJjSZFuXXaYlVXa_!!778652476.jpg" alt="" style="margin-top:30px;padding-top: 30px;border-top: 1px solid #cdcdcd;">
+        <img src="https://img.alicdn.com/imgextra/i4/778652476/TB2E9XcXcc5VKBjSszeXXatepXa_!!778652476.jpg" alt="" >
+        <img src="https://img.alicdn.com/imgextra/i3/778652476/TB2FRRcXb.5VKBjSspeXXaC5pXa_!!778652476.jpg" alt="" >
+
+    </div>
+
+    <div class="col-xs-2"></div>
+</div>
+<!--商品详情尾部-->
+<div class="container" >
+    <img  src="../images/bottom.jpg" alt=""  style="margin-top: 50px;padding-top: 30px;border-top: 1px solid #cdcdcd">
+</div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="userpage.css" />
+    <link rel="stylesheet" type="text/css" href="../toolkit/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <script type="text/Javascript" src="../toolkit/JQ/jquery.js"></script>
+    <script type="text/Javascript" src="../toolkit/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/Javascript" src="userpages.js"></script>
+
+    <style type="text/css">
+        a:link{text-decoration:none; }  /* 指正常的未被访问过的链接*/
+        a:visited{text-decoration:none; }/*指已经访问过的链接*/
+        a:hover{text-decoration:none;}/*指鼠标在链接*/
+        a:active{text-decoration:none;}/* 指正在点的链接*/
+        .Maintitle:before{position:absolute;width:5px;height:30px;background:#fdcb83;content:"";top:5px;left:0;}
+        .head{position:relative;line-height: 40px;width: 100%;height: 40px;font-weight:bold;font-size:22px;background-color: #ffffff;padding-left: 20px}
+        .form-container label{
+            width: 20%;
+            text-align: right;
+            color: orange;
+            line-height: 40px;
+            height: 40px;
+        }
+        .form-control{
+            line-height: 40px;
+            height: 40px;
+            display:inline-block;
+            width: 75%;
+        }
+    </style>
+</head>
+<body style="background: #f5f5f5">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">个人中心</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="../MainPage/Mainpage.html">首页 <span class="sr-only">(current)</span></a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜索一下吧！">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../shoppcart/shoppingcart.html">购物车</a></li>
+                <li><a href="#">收藏夹</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container" style="background: #ffffff" >
+    <div class="row">
+
+        <!--管理栏-->
+        <div class="col-xs-2"  >
+
+            <ul class="list-group" style="font-weight: bold">
+
+                <text  class="list-group-item" style="border:0px;margin-top: 30px">
+                    <div class="glyphicon glyphicon-file" style="color: #fdcb83"></div>
+                    账户管理
+                    <ul class="list-group" style="margin-bottom: 0px;font-weight: normal">
+                        <li class="list-group-item" style="border:0px;margin-bottom: 0px" >&nbsp;&nbsp;<a href="../UserPage/user.html">个人信息</a></li>
+                        <li class="list-group-item" style="border:0px;margin-bottom: 0px;padding-top: 0px" >&nbsp;&nbsp;<a href="security.html">安全中心</a></li>
+                    </ul>
+                </text>
+
+                <text  class="list-group-item" style="border:0px">
+                    <div class="glyphicon glyphicon-th-list" style="color: #fdcb83"></div>
+                    订单中心
+                    <ul class="list-group" style="margin-bottom: 0px;font-weight: normal">
+                        <li class="list-group-item" style="border:0px" >&nbsp;&nbsp;<a href="../OrderCenterPage/OrderCenter.html">我的订单</a></li>
+                    </ul>
+                </text>
+
+                <text  class="list-group-item" style="border:0px">
+                    <div class="glyphicon glyphicon-bookmark" style="color: #fdcb83"></div>
+                    管理中心
+                    <ul class="list-group" style="margin-bottom: 0px;font-weight: normal">
+                        <li class="list-group-item" style="border:0px;margin-bottom: 0px">&nbsp;&nbsp;<a href="../Collectpage/collect.html">我的收藏</a></li>
+                    </ul>
+                </text>
+
+                <text  class="list-group-item" style="border:0px">
+                    <div class="glyphicon glyphicon-yen" style="color: #fdcb83"></div>
+                    我的钱包
+                    <ul class="list-group" style="margin-bottom: 0px;font-weight: normal">
+                        <li class="list-group-item" style="border:0px;margin-bottom: 0px">&nbsp;&nbsp;<a href="#">充值</a></li>
+                        <li class="list-group-item" style="border:0px;margin-bottom: 0px;padding-top: 0px">&nbsp;&nbsp;<a href="#">转账</a></li>
+                    </ul>
+                </text>
+
+            </ul>
+
+        </div>
+
+        <!--订单详情-->
+        <div class="col-xs-10"  style="background-color: #ffffff;border-left: 10px solid #f5f5f5" >
+            <div style="width: 100%;height: 30px;background: #ffffff;"></div>
+            <div class="head" >
+                <text class="Maintitle">个人信息</text>
+            </div>
+            <div style="width: 100%;height: 15px;background: #ffffff;"></div>
+
+            <div style="width: 870px;height: 700px;background-color: white">
+                <div style="width: 870px;height: 700px;background-color: white">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form class="form-group" method="post" action="mlogin.js">
+                                <div class="form-container" >
+
+                                    <label for="userimg" >用户头像：</label>
+                                    <div style="margin-left: 90px">
+                                    <div id="userimg" class="imageFileInput">
+                                        <input id="subimg" class="fileInput " type="file" onchange="preview(this)">
+                                    </div>
+                                    <input type="button" class="btn btn-default" style="float: left; margin-left: 30px" onclick="submitimg()" id="imgbtn" value="上传" />
+                                    </div>
+                                    <div style="height: 140px"> </div>
+                                    <label for="username" >用户名：</label>
+                                    <input type="text" class="form-control" value="" id="username" placeholder="用户名">
+
+                                    <div style="height: 30px"> </div>
+                                    <label >性别：</label>
+                                    <input type="radio" style="margin-left: 5%"  name="gender" value="1">男
+                                    <input type="radio" style="margin-left: 7%" name="gender" value="2">女
+                                    <input type="radio" style="margin-left: 7%" name="gender" value="3" checked>保密
+
+                                    <div style="height: 30px"> </div>
+                                    <label for="email" >邮箱：</label>
+                                    <input type="text" class="form-control" value=""  id="email" placeholder="邮箱">
+
+                                    <div style="height: 30px"></div>
+                                    <label for="age" >年龄：</label>
+                                    <input type="text" class="form-control" value="" id="age" placeholder="年龄">
+
+                                    <div style="height: 30px"></div>
+                                    <label for="address" >收货地址：</label>
+                                    <input type="text" class="form-control" value="" id="address" placeholder="地址">
+
+                                   <!--  <div style="height: 30px"></div>
+                                    <label  for="account">银行卡号：</label>
+                                    <input type="text" class="form-control" value="" id="account" placeholder="银行卡号"> -->
+<!-- 
+                                    <div style="height: 30px"></div>
+                                    <label for="money" >余额：</label>
+                                    <input type="text" class="form-control" value="" id="money" placeholder="余额">
+ -->
+                                    <p style="margin-top: 50px">
+                                        <input type="button" class="btn btn-Primary btn-lg btn-block" style="border:0;background-color: #f0ad4e;width: 80%;margin: 0 10% 0 10%;" value="提交" onclick="submitmsg();">
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+
