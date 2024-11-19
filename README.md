@@ -1,7 +1,7 @@
 # e-commercial-web-platform
 LeFresh Life is a B2C e-commerce platform focused on daily consumer goods. The platform operates under a "website ordering - store pickup" shopping model. The LeFresh Life website manages and maintains all the products available for sale, providing consumers with a unified experience for browsing, shopping, placing orders, and making payments. Offline stores located across various regions offer convenient in-store pickup services for customers.
 
-# Modle Design
+## Modle Design
 <img src="https://github.com/user-attachments/assets/9c4b80ab-69ae-42ff-8258-d524281be205" alt="Home Page" width="600">
 
 # Users System Design
