@@ -24,7 +24,8 @@ LeFresh Life is a B2C e-commerce platform focused on daily consumer goods. The p
 <img src="https://github.com/user-attachments/assets/083d4564-4d5a-4939-8b62-335537dd53d2" alt="Payment View" width="600">
 
 7. Personal Orders  
-<img src="https://github.com/user-attachments/assets/61ff9914-5f41-4fd4-9823-d8004519f0ea" alt="Personal Orders" width="600">
+<img src="https://github.com/user-attachments/assets/e250884a-669c-45b1-b179-b9edc67da1c4" alt="Personal Orders" width="600">
+
 
 ## Management System Design
 1. Login Page  
