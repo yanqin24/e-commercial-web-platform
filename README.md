@@ -4,7 +4,7 @@ LeFresh Life is a B2C e-commerce platform focused on daily consumer goods. The p
 ## Modle Design
 <img src="https://github.com/user-attachments/assets/9c4b80ab-69ae-42ff-8258-d524281be205" alt="Home Page" width="600">
 
-# Users System Design
+## Users System Design
 1. Home Page  
 <img src="https://github.com/user-attachments/assets/cf818b84-6bed-46b1-a4d7-d3c849e78be4" alt="Home Page" width="600">
 
@@ -26,9 +26,7 @@ LeFresh Life is a B2C e-commerce platform focused on daily consumer goods. The p
 7. Personal Orders  
 <img src="https://github.com/user-attachments/assets/61ff9914-5f41-4fd4-9823-d8004519f0ea" alt="Personal Orders" width="600">
 
-
-# Management System Design
-
+## Management System Design
 1. Login Page  
 <img src="https://github.com/user-attachments/assets/9dcf97bb-f55b-4762-bcdd-8dc985df50ea" alt="Login Page" width="600">
 
@@ -41,8 +39,6 @@ LeFresh Life is a B2C e-commerce platform focused on daily consumer goods. The p
 4. Stores Management System
 <img src="https://github.com/user-attachments/assets/3326e84a-c014-4b79-a9a7-f3316db36777" alt="Stores Management System" width="600">
 
-# Database Design
-
+## Database Design
 <img src="https://github.com/user-attachments/assets/d4537d76-8632-4dbb-b656-4e7dd0856cf8" alt="Database Design 1" width="600">
-
 <img src="https://github.com/user-attachments/assets/00741a30-b31e-425a-b075-e0b4fa8cb896" alt="Database Design 2" width="600">
