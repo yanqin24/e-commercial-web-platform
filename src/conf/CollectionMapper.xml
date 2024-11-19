@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="conf.CollectionMapper">
+	<select id="getCollectionByUserId" parameterType="String"
+		resultType="model.Good">
+		select * from collection where user_id=#{user_id}
+	</select>
+	<insert id="insertIntoCollection" parameterType="hashmap">
+		insert into
+		collection values(#{user_id},#{good_id},#{producer_id})
+	</insert>
+	<delete id="deleteCollection" parameterType="hashmap">
+		delete from
+		collection where user_id=#{user_id} and good_id=#{good_id} and
+		producer_id=#{producer_id}
+	</delete>
+	
+	<select id="selectGoodInCollection" resultType="model.Good">
+	select * from collection where user_id = #{user_id} and good_id = #{good_id} and producer_id = #{producer_id}
+	</select>
+</mapper>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="conf.GoodMapper">
+<select id="selectGood" resultMap="goodresultmap">
+	select * from goods
+</select>
+<select id="selectAllGoodIdInProducer" resultType="String">
+select distinct good_id from producer_good 
+</select>
+<select id="selectGoodMaxPrice" resultType="float">
+select max(price) from producer_good where good_id = #{id} group by good_id
+</select>
+
+<select id="selectGoodMinPrice" resultType="float">
+select min(price) from producer_good where good_id = #{id} group by good_id
+</select>
+<select id="selectGoodProducerImgByGoodId" resultType="model.GoodProducerImg">
+		select 
+			good_id,
+			name,
+			breif_introduction,
+			introduction, 
+			third_class,
+			src,
+			producer_id,
+			price,
+			inventory,
+			access_num,
+			sale_num,
+			putaway from goods natural join producer_good natural join good_imgs
+			where good_id = #{good_id}
+	</select>
+<select id="selectCollecterNumForGood" resultType="int">
+select count(user_id) from collection where good_id=#{id}
+</select>
+
+<resultMap id="goodresultmap" type="model.Good">
+<id property="good_id" column="good_id"/>
+<result property="name" column="name"/>
+<result property="breif_introduction" column="breif_introduction"/>
+<result property="introduction" column="introduction"/>
+<result property="third_class" column="third_class"/>
+<collection property="img_src" column="good_id" javaType = "java.util.ArrayList" ofType="java.lang.String" select = "selectImgSrc"></collection>
+</resultMap>
+
+
+
+<select id="selectImgSrc" resultType="java.lang.String">
+select src from good_imgs where good_id = #{id}
+</select>
+
+<select id= "selectGoodsByThirdClass" parameterType="String" resultType="model.Good">
+select * from goods where third_class = #{third_class}
+</select>
+
+<select id="selectGoodsBySecondClass" parameterType="String" resultType = "model.Good">
+select * from goods
+left outer join second_third on goods.third_class=second_third.third_class
+where second_class = #{second_class}
+</select>
+
+<select id = "selectGoodsByFirstClass" parameterType="String" resultType="model.Good">
+select * from goods
+left outer join second_third on goods.third_class = second_third.third_class
+left outer join first_second on second_third.second_class = first_second.second_class
+where first_class = #{first_class}
+</select>
+
+<!-- 根据商品ID和商家ID获取商品详细信息 -->
+<select id="selectGoodByProAndGood" resultMap="gooddetailMap">
+select * from goods 
+right outer join producer_good on goods.good_id = producer_good.good_id
+where producer_id = #{producer_id} and goods.good_id = #{good_id}
+</select>
+<resultMap type="model.Good" id="gooddetailMap">
+<id property="good_id" column="good_id"></id>
+<association property="img_src" column="good_id" javaType="java.util.List" select="selectGoodImgById"></association>
+</resultMap>
+<!-- 根据商品ID和商家ID获取商品详细信息 -->
+
+
+
+
+<!-- 根据商品名字模糊查询 -->
+	<select id="searchGoodForUser" resultMap="searchgoodMap">
+	select * from goods 
+	where name like #{description}
+	</select>
+	<resultMap type="model.Good" id="searchgoodMap">
+	<id property="good_id" column="good_id"/>
+	<collection property="img_src" column="good_id" select="selectGoodImgById"></collection>
+		</resultMap>
+<!-- 根据商品名字模糊查询 -->
+
+<select id="selectAllGoodByProducerId" resultType="model.Good">
+select * from goods 
+right outer join producer_good on goods.good_id = producer_good.good_id 
+where producer_id = #{id}
+</select>
+
+<select id="selectProducerAndGoodByGoodId" resultMap="goodWithIDmap">
+select * from producer_good 
+left outer join goods on goods.good_id = producer_good.good_id
+where producer_good.good_id = #{good_id}
+</select>
+
+
+<select id="selectGoodById" resultMap="goodWithIDmap">
+select * from goods 
+right outer join good_imgs on goods.good_id = good_imgs.good_id
+where goods.good_id = #{id}
+</select>
+<resultMap id="goodWithIDmap" type = "model.Good">
+<collection property="img_src" column="good_id" javaType = "java.util.ArrayList" ofType="java.lang.String" select="selectImgSrc"/>
+</resultMap>
+
+
+<select id="selectSaleNumForGood" resultType="int">
+select count(user_id) from user_order 
+right outer join order_good on user_order.order_id = order_good.order_id
+where good_id = #{good_id} and producer_id = #{producer_id} and status = "已发货" group by good_id
+</select>
+
+<insert id="insertBasicInfoForGood">
+insert into goods(good_id,name,breif_introduction,introduction,third_class) values(#{good_id},#{name},#{breif_introduction},#{introduction},#{third_class})
+</insert>
+
+<insert id="insertImgForGood">
+insert into good_imgs values
+<foreach item="item" index="i" collection="img_src" separator=",">
+(#{good_id},#{item})
+</foreach>
+</insert>
+
+
+<insert id="insertProducerInfoForGood">
+insert into producer_good(producer_id,good_id,price,inventory,putaway) values(#{producer_id},#{good_id},#{price},#{inventory},#{putaway})
+</insert>
+
+<update id="updateBasicInfoForGoodById">
+update goods set 
+name = #{name},
+breif_introduction = #{breif_introduction},
+introduction = #{introduction},
+third_class = #{third_class} 
+where good_id = #{good_id}
+</update>
+
+
+<delete id="deleteGoodImgById">
+<foreach item= "item" index = "i" collection="img_src">
+delete from good_imgs where good_id = #{good_id} and src= #{item}
+</foreach>
+</delete>
+
+<delete id="deleteGood" parameterType="map">
+delete from producer_good where good_id = #{good_id} and producer_id = #{producer_id}
+</delete>
+
+<select id="selectGoodImgById" resultType="String">
+select src from good_imgs where good_id = #{good_id}
+</select>
+
+
+<update id="updateProducerInfoForGoodById">
+update producer_good set 
+price = #{price},
+inventory = #{inventory},
+putaway = #{putaway}
+where good_id = #{good_id} and 
+producer_id = #{producer_id}
+</update>
+
+</mapper>
+    

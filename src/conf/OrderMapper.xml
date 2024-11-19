@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="conf.OrderMapper">
+
+
+<select id="selectAllOrderByUser" parameterType="String" resultMap="orderresuleMap">
+select order_id,user_id as cellphone,status,order_time,address_src as address,deliver_name from user_order where user_id= #{id}
+</select>
+<select id="selectAllOrder" resultMap="orderresuleMap">
+select * from user_order
+</select>
+<resultMap type="model.Order" id="orderresuleMap">
+<id property="order_id" column="order_id"/>
+<result property="status" column="status"/>
+<result property="order_time" column="order_time"/>
+<result property="cellphone" column="user_id"/>
+<result property="address" column="address_src"/>
+<result property="deliver_name" column="deliver_name"/>
+<collection property="goodlist" column="order_id" javaType="java.util.List" ofType="model.CartGoodItem" select="selectAllItemInOrder"></collection>
+</resultMap>
+<select id="selectAllItemInOrder" resultMap="orderitemMap">
+select * from order_good where order_id = #{order_id}
+</select>
+<resultMap type="model.CartGoodItem" id="orderitemMap">
+<association property="good" column="good_id = good_id,producer_id= producer_id" javaType="model.Good" select="conf.GoodMapper.selectGoodByProAndGood">
+</association>
+</resultMap>
+<select id="selectGoodInItem" resultType="model.Good">
+select * from goods where good_id = #{good_id}
+</select>
+
+
+
+<select id="selectAllOrderId" resultType="String">
+select order_id from user_order
+</select>
+
+<select id="selectOrderById" parameterType="String" resultType="model.Order">
+select * from user_order where order_id=#{id}
+</select>
+
+<delete id="deleteOrderById" parameterType="String">
+delete from user_order where order_id = #{id}
+</delete>
+
+
+<insert id="generateOrder" parameterType="model.Order">
+insert into user_order(order_id,status,order_time,user_id,address_src,deliver_name) values(#{order_id},#{status},#{order_time},#{cellphone},#{address},#{deliver_name})
+</insert>
+
+<insert id="insertOrderGood" parameterType="model.Order">
+<foreach  item="item" collection="goodlist">
+insert into order_good(order_id,good_id,producer_id,amount) values(#{order_id},#{item.good.good_id},#{item.good.producer_id},#{item.amount})
+</foreach>
+</insert>
+
+
+
+</mapper>
