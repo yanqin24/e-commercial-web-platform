@@ -35,8 +35,8 @@ LeFresh Life is a B2C e-commerce platform focused on daily consumer goods. The p
 3. Users Management System  
 <img src="https://github.com/user-attachments/assets/fc6a2539-7583-490f-a96a-614dc6da6178" alt="Users Management System" width="600">
 
-4. Stores Management System  
-<img src="https://github.com/user-attachments/assets/8a88a90c-149e-4454-8692-dc366f61ff59" alt="Stores Management System" width="600">
+4. Stores Management System
+<img src="https://github.com/user-attachments/assets/3326e84a-c014-4b79-a9a7-f3316db36777" alt="Stores Management System" width="600">
 
 # Database Design
 
